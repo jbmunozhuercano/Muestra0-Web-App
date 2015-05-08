@@ -1,0 +1,48 @@
+/* Estilos CSS */
+
+div.contenido {
+    padding: 10px;
+}
+
+div#navPosts {
+    padding: 0 10px;
+}
+
+div#logoMuestra0 {
+    background: url('../img/logo-muestra0-small.png') no-repeat;
+    display: block;
+    width: 225px;
+    height: 75px;
+    margin: 5px auto;
+}
+
+div.contenido img {
+    display: block;
+    margin: 5px auto;
+}
+
+div.contenido h1 {
+    color: #035d8d;
+}
+
+a,
+.more-link {
+    text-decoration: none;
+}
+
+.ui-footer {
+    text-align: right;
+}
+
+.ui-footer a {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 604px) {
+    
+    div.contenido img {
+        width: 100%;
+        height: auto;
+    }
+    
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es_ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile App - Muestra0</title>
+    <link rel="stylesheet" href="themes/Muestra0.min.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <section id="inicio" data-role="page" data-theme="c">
+       <div data-role="header">
+            <div id="logoMuestra0"></div>
+            <nav data-role="navbar">
+                <ul>
+                    <li><a href="#inicio" class="ui-btn-active">Inicio</a></li>
+                    <li><a href="#posts">Ver posts</a></li>
+                    <li><a href="#sobreNosotros">Sobre nosotros</a></li>
+                </ul>
+            </nav>                
+        </div>
+        <div class="contenido" data-role="ui-content">
+            <img src="img/muestra0_inicio.jpg">
+            <h1 class="ui-bar ui-bar-c ui-corner-all">Muestra0 Web App</h1>
+            <div class="ui-body ui-body-c ui-corner-all">
+                <p>Con esta web app podrás acceder al extracto de las últimas 6 entradas del blog <a href="http://muestra0.es" data-ajax="false">Muestra0</a>.</p>
+                <p>También podrás ver detalles como el autor, fecha de publicación y número de comentarios de esas entradas.</p>
+                <p>Gracias por utilizar nuestra aplicación.</p>
+            </div>
+        </div>
+        <div data-role="footer">
+            <a href="http://muestra0.es" data-ajax="false">muestra0.es</a>
+        </div>
+    </section>
+    <section id="posts" data-role="page" data-theme="c">
+       <div data-role="header">
+            <div id="logoMuestra0"></div>
+            <nav data-role="navbar">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#posts" class="ui-btn-active">Ver posts</a></li>
+                    <li><a href="#sobreNosotros">Sobre nosotros</a></li>
+                </ul>
+            </nav>                
+        </div>
+        <div id="navPosts" data-role="collapsible" data-collapsed="true">
+            <h4>Últimos posts</h4>
+            <ul data-role="listview" data-inset="true">
+                <li><a id="enlace0" onclick="obtenerPost(0)">Post 1</a></li>
+                <li><a id="enlace1" onclick="obtenerPost(1)">Post 2</a></li>
+                <li><a id="enlace2" onclick="obtenerPost(2)">Post 3</a></li>
+                <li><a id="enlace3" onclick="obtenerPost(3)">Post 4</a></li>
+                <li><a id="enlace4" onclick="obtenerPost(4)">Post 5</a></li>
+                <li><a id="enlace5" onclick="obtenerPost(5)">Post 6</a></li>
+            </ul>
+        </div>
+        <div class="contenido" data-role="ui-content">
+            <div id="contenidoDinamico" >
+
+            </div>
+            <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                <h4>Detalles</h4>
+                <ul data-role="listview" data-inset="false">
+                    <li id="autor"></li>
+                    <li id="fecha"></li>
+                    <li id="comentarios"></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer">
+            <a href="http://muestra0.es" data-ajax="false">muestra0.es</a>
+        </div>
+    </section>
+    <section id="sobreNosotros" data-role="page" data-theme="c">
+        <div data-role="header">
+            <div id="logoMuestra0"></div>
+            <nav data-role="navbar">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#posts">Ver posts</a></li>
+                    <li><a href="#sobreNosotros" class="ui-btn-active">Sobre nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+       <div class="contenido" data-role="ui-content">
+           <img src="img/muestra0_quienes_somos.jpg">
+           <div class="ui-body ui-body-c ui-corner-all">
+               <h1 class="ui-bar ui-bar-c ui-corner-all">Nuestra razón de ser</h1>
+                <p><a href="http://muestra0.es" data-ajax="false">Muestra0</a> surge como una sala de exposiciones virtual libre donde los artistas, de todas las disciplinas, puedan mostrar al mundo sus trabajos, explicar su obra y su visión del arte.</p>
+               <p>Sin embargo, somos conscientes que sin la colaboración y el trabajo destacado de todos ellos, que han decidido confiar y creer en nosotros dándonos una oportunidad, este trabajo carecería de sentido, pues son ellos los auténticos protagonistas y artífices de que esta propuesta pueda ver la luz.</p>
+               <p>Dar las gracias de antemano a todos los artistas que nos han permitido formar parte de su obra y dejar que nos adentremos en ella. Un universo en el que en ocasiones las palabras pierden su alcance para que puedan desarrollarse y tomen significación los sentidos.
+                   </p>     </div>
+       </div>
+        <div data-role="footer">
+            <a href="http://muestra0.es" data-ajax="false">muestra0.es</a>
+        </div>
+    </section>
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    <script src="js/miscript.js" type="text/javascript"></script>
+</body>
+</html>
