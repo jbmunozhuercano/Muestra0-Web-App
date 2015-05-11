@@ -20,13 +20,13 @@ function mostrarFecha(datos) {
 
 function montarImagen(datos) {
     var imagen = '';
-    if(jQuery.type(datos.post.attachments[0].images) !== 'array') {
+    if(jQuery.type(datos.post.attachments[0].images) !== 'array') { // Comprobamos que es un objeto
         if(datos.post.attachments[0].images['post-thumbnail'].width == 604) {
             var url = datos.post.attachments[0].images['post-thumbnail'].url;
                         
             imagen += "<img src='" + url + "' />";            
         }        
-    } else {
+    } else { // Si es un array cargamos una imagen por defecto
         imagen += "<img src='img/muestra0.jpg' />";
     }
     return imagen;
@@ -40,24 +40,25 @@ function montarComentarios(datos) {
     } else {
         cadena += datos + " comentarios";
     }
-    
     return cadena;
 }
 
 function mostrarContenido(datos) {
-    var contenido = '', autor = '', fecha = '', comentarios = '';
+    var contenido = '', categoria = '', autor = '', fecha = '', comentarios = '';
     
     if (datos.post.attachments.length > 0) {
         contenido += montarImagen(datos);
     } else {
-        contenido += "<img src='img/muestra0.jpg' />";    
+        contenido += "<img src='img/muestra0.jpg' />"; // Si la entrada no tiene imagen carga una por defecto    
     }
     contenido += "<h1 class='ui-bar ui-bar-c ui-corner-all'>" + datos.post.title + "</h1>";
     contenido += "<div class='ui-body ui-body-c ui-corner-all'>" + datos.post.excerpt + "</div>";
+    categoria += "Categoría: " + datos.post.categories[0].title;
     autor += "Escrito por " + datos.post.author.name;
     fecha += mostrarFecha(datos.post.date);
     comentarios += montarComentarios(datos.post.comment_count);
     $('#contenidoDinamico').html(contenido);
+    $('#categoria').html(categoria);
     $('#autor').html(autor);
     $('#fecha').html(fecha);
     $('#comentarios').html(comentarios);
@@ -84,14 +85,6 @@ function mostrarMensajeCarga() {
     },1);    
 }
 
-function mostrarEnlaces(datos) {
-    
-    for(var i = 0; i < datos.count; i++) {
-        $('#enlace' + i).text(datos.posts[i].title);        
-    }
-    
-}
-
 function obtenerIds() {
     $.ajax({
         url: url + paramsId,
@@ -102,7 +95,7 @@ function obtenerIds() {
         success: function(data) {
             for(var i=0; i < data.count; i++) {
                 vectorIds.push(data.posts[i].id);
-                mostrarEnlaces(data);
+                $('#enlace' + i).text(data.posts[i].title); // Montamos el nombre del ancla del submenu
             }            
         },
         complete: function() {
@@ -127,7 +120,7 @@ function obtenerPost(posicionVector) {
         },
         complete: function() {
             setTimeout(function(){
-                $.mobile.loading('hide');
+                $.mobile.loading('hide'); //Ocultamos el widget de carga
             },1);    
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -140,6 +133,7 @@ $(document).ready(function() {
     
     obtenerIds();
     obtenerPost(0);    
-       
+    $('nav > ul li:nth-child(2)').on('click', function() { //Muestra y oculta el submenu de navegación
+        $('nav > ul ul').fadeToggle();
+    });
 });
-
