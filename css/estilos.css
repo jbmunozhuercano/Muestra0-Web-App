@@ -18,7 +18,6 @@ nav > ul > li.ui-block-b > ul {
     z-index: 9999;
     display: none;
     border-radius: 5px;
-    border: 1px solid #cdcdcd;
 }
 
 nav > ul > li.ui-block-b > ul > li.ui-block-a {
