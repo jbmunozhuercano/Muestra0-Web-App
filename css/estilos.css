@@ -1,19 +1,45 @@
 /* Estilos CSS */
 
-div.contenido {
-    padding: 10px;
-}
-
-div#navPosts {
-    padding: 0 10px;
-}
-
 div#logoMuestra0 {
     background: url('../img/logo-muestra0-small.png') no-repeat;
     display: block;
     width: 225px;
     height: 75px;
     margin: 5px auto;
+}
+
+div.contenido {
+    padding: 10px;
+}
+
+nav > ul > li.ui-block-b > ul {
+    position: absolute;
+    top: 50px;
+    z-index: 9999;
+    display: none;
+    border-radius: 5px;
+    border: 1px solid #cdcdcd;
+}
+
+nav > ul > li.ui-block-b > ul > li.ui-block-a {
+    width: 70%;
+} 
+
+a#enlace5 {
+    margin-right: 0px;
+}
+
+a#enlacePosts {
+    float: right;
+    border-radius: 5px;
+}
+
+div#popupPosts {
+    border: none;
+}
+
+div#popupPosts > div {
+    margin: 0;
 }
 
 div.contenido img {
