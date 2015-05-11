@@ -133,7 +133,7 @@ $(document).ready(function() {
     
     obtenerIds();
     obtenerPost(0);    
-    $('nav > ul li:nth-child(2)').on('click', function() { //Muestra y oculta el submenu de navegación
+    $('nav > ul > li:nth-child(2)').on('click', function() { //Muestra y oculta el submenu de navegación
         $('nav > ul ul').fadeToggle();
     });
 });
