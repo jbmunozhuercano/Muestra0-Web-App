@@ -20,8 +20,16 @@ nav > ul > li.ui-block-b > ul {
     border-radius: 5px;
 }
 
+.ui-navbar .ui-grid-duo .ui-block-a:last-child .ui-btn {
+    margin-right: 0;
+}
+
+nav > ul > li.ui-block-b > ul {
+    width: 33%;
+}
+
 nav > ul > li.ui-block-b > ul > li.ui-block-a {
-    width: 70%;
+    width: 100%;
 } 
 
 a#enlace5 {
@@ -61,6 +69,14 @@ a,
 
 .ui-footer a {
     margin-right: 10px;
+}
+
+@media only screen and (max-width: 420px) {
+
+    nav > ul > li.ui-block-b > ul > li.ui-block-a {
+        width: 180%;
+    } 
+    
 }
 
 @media only screen and (max-width: 604px) {
