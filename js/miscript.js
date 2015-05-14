@@ -33,12 +33,12 @@ function montarImagen(datos) {
 }
 
 function montarComentarios(datos) {
-    var cadena = '';
+    var cadena = "<li class='ui-li-static ui-body-inherit ui-last-child'>";
     
     if(datos == 1) {
-        cadena += datos + " comentario";
+        cadena += datos + " comentario</li>";
     } else {
-        cadena += datos + " comentarios";
+        cadena += datos + " comentarios</li>";
     }
     return cadena;
 }
@@ -56,12 +56,21 @@ function mostrarContenido(datos) {
     categoria += "Categoría: " + datos.post.categories[0].title;
     autor += "Escrito por " + datos.post.author.name;
     fecha += mostrarFecha(datos.post.date);
-    comentarios += montarComentarios(datos.post.comment_count);
+    
     $('#contenidoDinamico').html(contenido);
-    $('#categoria').html(categoria);
-    $('#autor').html(autor);
-    $('#fecha').html(fecha);
-    $('#comentarios').html(comentarios);
+    $('#detalles li:nth-child(1)').html(categoria);
+    $('#detalles li:nth-child(2)').html(autor);
+    $('#detalles li:nth-child(3)').html(fecha);
+    $('#detalles li:nth-child(4)').remove();
+    
+    if(datos.post.comment_count > 0) { // Si tiene comentarios, muestra cuantos
+        comentarios += montarComentarios(datos.post.comment_count);
+        $('#detalles li:nth-child(3)').removeClass('ui-last-child'); // Le quitamos la clase de borde inferior redondeado para que lo tenga el siguiente elemento
+        $('#detalles').append(comentarios); // Añadimos el nodo de comentario a la lista desordenada
+    }
+    
+   
+    $('#').html(comentarios);
 }
 
 function mostrarMensajeError() {
@@ -92,11 +101,11 @@ function obtenerIds() {
         type: 'GET',
         contentType: 'text/javascript',
         beforeSend: mostrarMensajeCarga(),
-        success: function(data) {
-            for(var i=0; i < data.count; i++) {
-                vectorIds.push(data.posts[i].id);
-                $('#enlace' + i).text(data.posts[i].title); // Montamos el nombre del ancla del submenu
-            }            
+        success: function(data) {            
+            $('#subMenu li a').each(function (i) {
+                vectorIds.push(data.posts[i].id); // Almacenamos el id de los últimos posts
+                $(this).text(data.posts[i].title); // Mostramos el título de cada post en el ancla
+            });            
         },
         complete: function() {
             setTimeout(function(){
@@ -129,10 +138,23 @@ function obtenerPost(posicionVector) {
     });
 }
 
+function anyadirEventos() {
+    var arrayElementos = $('#subMenu li a');
+        
+    arrayElementos.each(function(i){
+                    
+        $(this).on('click', function(){
+            obtenerPost(i);        
+        });
+    
+    });
+}
+
 $(document).ready(function() {
     
     obtenerIds();
-    obtenerPost(0);    
+    obtenerPost(0); 
+    anyadirEventos();
     $('nav > ul > li:nth-child(2)').on('click', function() { //Muestra y oculta el submenu de navegación
         $('nav > ul ul').fadeToggle();
     });

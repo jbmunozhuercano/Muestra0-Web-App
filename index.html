@@ -41,13 +41,13 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#posts" class="ui-btn-active">Ver posts</a>
-                        <ul data-role="listview" data-inset="false">
-                            <li class="ui-block-a"><a id="enlace0" onclick="obtenerPost(0)">Post 1</a></li>
-                            <li class="ui-block-a"><a id="enlace1" onclick="obtenerPost(1)">Post 2</a></li>
-                            <li class="ui-block-a"><a id="enlace2" onclick="obtenerPost(2)">Post 3</a></li>
-                            <li class="ui-block-a"><a id="enlace3" onclick="obtenerPost(3)">Post 4</a></li>
-                            <li class="ui-block-a"><a id="enlace4" onclick="obtenerPost(4)">Post 5</a></li>
-                            <li class="ui-block-a"><a id="enlace5" onclick="obtenerPost(5)">Post 6</a></li>
+                        <ul id="subMenu" data-role="listview" data-inset="false">
+                            <li class="ui-block-a"><a>Post 1</a></li>
+                            <li class="ui-block-a"><a>Post 2</a></li>
+                            <li class="ui-block-a"><a>Post 3</a></li>
+                            <li class="ui-block-a"><a>Post 4</a></li>
+                            <li class="ui-block-a"><a>Post 5</a></li>
+                            <li class="ui-block-a"><a>Post 6</a></li>
                         </ul><!-- listview -->
                     </li>
                     <li><a href="#sobreNosotros">Sobre nosotros</a></li>
@@ -60,11 +60,10 @@
             </div>
             <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                 <h4>Detalles</h4>
-                <ul data-role="listview" data-inset="false">
-                    <li id="categoria"></li>
-                    <li id="autor"></li>
-                    <li id="fecha"></li>
-                    <li id="comentarios"></li>
+                <ul id="detalles" data-role="listview" data-inset="false">
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </div><!-- collapsible -->
         </div><!-- contenido -->
