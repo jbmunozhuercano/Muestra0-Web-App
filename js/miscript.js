@@ -21,9 +21,11 @@ function montarImagen(datos) {
     var imagen = '';
     
     if (jQuery.type(datos.post.attachments[0].images) !== 'array') { // Comprobamos que es un objeto
-        if (datos.post.attachments[0].images['post-thumbnail'].width === 604) {
-            var url = datos.post.attachments[0].images['post-thumbnail'].url;
+        if (datos.post.attachments[0].images['app-thumb']) {
+            var url = datos.post.attachments[0].images['app-thumb'].url;
             imagen += "<img src='" + url + "' />";
+        } else {
+            imagen += "<img src='img/muestra0.jpg' />";    
         }
     } else { // Si es un array cargamos una imagen por defecto
         imagen += "<img src='img/muestra0.jpg' />";
@@ -43,7 +45,7 @@ function montarComentarios(datos) {
 }
 
 var Entrada = function () {
-    var imagen, titulo, extracto, categoria, autor, fechaPub, comentarios;
+    var imagen, titulo, extracto, url, categoria, autor, fechaPub, comentarios;
     this.montarImagen = montarImagen;
     this.mostrarFecha = mostrarFecha;
     this.montarComentarios = montarComentarios;
@@ -58,12 +60,13 @@ function mostrarContenido(datos) {
         nuevaEntrada.imagen = "<img src='img/muestra0.jpg' />"; // Si la entrada no tiene imagen carga una por defecto    
     }
     nuevaEntrada.titulo = "<h1 class='ui-bar ui-bar-c ui-corner-all'>" + datos.post.title + "</h1>";
-    nuevaEntrada.extracto = "<div class='ui-body ui-body-c ui-corner-all'>" + datos.post.excerpt + "</div>";
+    nuevaEntrada.extracto = "<div class='ui-body ui-body-c ui-corner-all'>" + datos.post.excerpt;
+    nuevaEntrada.url = "<a data-ajax='false' href='" + datos.post.url + "'>Continuar leyendo: " + datos.post.title + "</a></div>";
     nuevaEntrada.categoria = "Categoría: " + datos.post.categories[0].title;
     nuevaEntrada.autor = "Escrito por " + datos.post.author.name;
     nuevaEntrada.fechaPub = nuevaEntrada.mostrarFecha(datos.post.date);
     
-    $('#contenidoDinamico').html(nuevaEntrada.imagen + nuevaEntrada.titulo + nuevaEntrada.extracto);
+    $('#contenidoDinamico').html(nuevaEntrada.imagen + nuevaEntrada.titulo + nuevaEntrada.extracto + nuevaEntrada.url);
     $('#detalles li:nth-child(1)').html(nuevaEntrada.categoria);
     $('#detalles li:nth-child(2)').html(nuevaEntrada.autor);
     $('#detalles li:nth-child(3)').html(nuevaEntrada.fechaPub);
